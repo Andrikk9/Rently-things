@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe — Idle Car Rental (landing)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Palette: Spring Green / Green / Dark Green / White / Gray / Black */
+      --spring-green: #09e57f;
+      --green: #005d49;
+      --dark-green: #0d3431;
+      --white-swatch: #e7eff2;
+      --gray-swatch: #2a2a2a;
+      --black-swatch: #0a0a0a;
+
+      --bg: var(--white-swatch);
+      --surface: var(--white-swatch);
+      --ink: var(--black-swatch);
+      --muted: #4b4b4b;
+      --line: #c9d3d7;
+      --accent: var(--spring-green);
+      --wire: var(--green);
+      --radius: 12px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "DM Sans", system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    /* wireframe chrome */
+    .wf-label {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--wire);
+      border: 1px dashed var(--wire);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    .wf-block {
+      border: 1px dashed var(--line);
+      background: var(--surface);
+      border-radius: var(--radius);
+      min-height: 48px;
+    }
+
+    .wf-ph {
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(0, 0, 0, 0.06),
+        rgba(0, 0, 0, 0.06) 8px,
+        rgba(255, 255, 255, 0.7) 8px,
+        rgba(255, 255, 255, 0.7) 16px
+      );
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin-inline: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(13, 52, 49, 0.08);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 14px 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links span {
+      border-bottom: 1px dotted var(--line);
+      cursor: default;
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      cursor: default;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fafafa;
+      border-color: var(--accent);
+    }
+
+    .hero {
+      padding: 3.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 820px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 0 0 1rem;
+      font-weight: 700;
+    }
+
+    .hero p.lead {
+      margin: 0 0 1.5rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 36ch;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-visual {
+      min-height: 280px;
+      /* Palette gradient preview for the main hero placeholder */
+      background:
+        radial-gradient(80% 120% at 30% 15%, rgba(9, 229, 127, 0.28), transparent 55%),
+        linear-gradient(135deg, rgba(9, 229, 127, 0.18), rgba(0, 93, 73, 0.18), rgba(13, 52, 49, 0.18));
+    }
+
+    .strip {
+      padding: 1.25rem 0;
+      border-block: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .strip-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.5rem;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .strip-logos {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .strip-logos .wf-block {
+      width: 72px;
+      height: 28px;
+      min-height: 0;
+    }
+
+    section {
+      padding: 3.25rem 0;
+    }
+
+    section h2 {
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.5rem;
+      font-weight: 700;
+    }
+
+    section .section-intro {
+      color: var(--muted);
+      max-width: 52ch;
+      margin: 0 0 2rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 720px) {
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .step {
+      padding: 1.25rem;
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px dashed var(--wire);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .step h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .step p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 720px) {
+      .cards-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      padding: 1.35rem;
+    }
+
+    .card .icon-ph {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      margin-bottom: 0.85rem;
+    }
+
+    .card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .split-audience {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 720px) {
+      .split-audience {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .audience {
+      padding: 1.5rem;
+    }
+
+    .audience h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .audience ul {
+      margin: 0 0 1rem;
+      padding-left: 1.1rem;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .quote {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 560px) {
+      .quote {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .quote-avatar {
+      min-height: 100px;
+    }
+
+    .quote p {
+      margin: 0 0 0.75rem;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .quote cite {
+      font-size: 13px;
+      font-style: normal;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .faq {
+      max-width: 640px;
+    }
+
+    .faq-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-item strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 0.35rem;
+    }
+
+    .faq-item span {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 720px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    footer .col p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer .col h4 {
+      margin: 0 0 0.5rem;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+    }
+
+    footer .links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .bottom-bar {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px dashed var(--line);
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-inner">
+      <div class="logo">[Brand]</div>
+      <nav class="nav-links" aria-label="Primary">
+        <span>How it works</span>
+        <span>For owners</span>
+        <span>For renters</span>
+        <span>Safety</span>
+        <span>Pricing</span>
+      </nav>
+      <div class="nav-cta">
+        <button type="button" class="btn">List your car</button>
+        <button type="button" class="btn btn-primary">Browse cars</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="wf-label">Hero</span>
+          <h1>Turn idle hours on your car into income.</h1>
+          <p class="lead">Short-term peer-to-peer rentals when you are not driving. You set availability; verified drivers book nearby.</p>
+          <div class="hero-ctas">
+            <button type="button" class="btn btn-primary">Start earning</button>
+            <button type="button" class="btn">See cars near me</button>
+          </div>
+        </div>
+        <div>
+          <div class="wf-ph hero-visual" role="img" aria-label="Wireframe placeholder">[ Hero visual — car + calendar / map abstraction ]</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip">
+      <div class="container strip-inner">
+        <span class="wf-label" style="margin:0">Trust strip</span>
+        <div class="strip-logos" aria-hidden="true">
+          <div class="wf-block"></div>
+          <div class="wf-block"></div>
+          <div class="wf-block"></div>
+          <div class="wf-block"></div>
+        </div>
+        <span>[ e.g. insurance partner · avg. rating · cities covered ]</span>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <span class="wf-label">Section</span>
+        <h2>How it works</h2>
+        <p class="section-intro">Owners block out when the car is unavailable; renters request approved windows. Pickup and return follow in-app checklist.</p>
+        <div class="steps">
+          <article class="wf-block step">
+            <div class="step-num">1</div>
+            <h3>List &amp; verify</h3>
+            <p>Add photos, pricing, and idle windows. Complete identity and vehicle checks.</p>
+          </article>
+          <article class="wf-block step">
+            <div class="step-num">2</div>
+            <h3>Accept bookings</h3>
+            <p>You approve each trip. Messaging and calendar keep handoffs clear.</p>
+          </article>
+          <article class="wf-block step">
+            <div class="step-num">3</div>
+            <h3>Get paid</h3>
+            <p>Payout after trip closeout. Damage and mileage rules shown upfront.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:var(--surface); border-block:1px solid var(--line)">
+      <div class="container">
+        <span class="wf-label">Section</span>
+        <h2>Why use the platform</h2>
+        <p class="section-intro">Positioning for both sides: owners monetize downtime; renters access flexible local cars without a fleet.</p>
+        <div class="cards-3">
+          <article class="wf-block card">
+            <div class="wf-ph icon-ph" style="min-height:40px">icon</div>
+            <h3>Earn on your schedule</h3>
+            <p>Open only evenings, weekends, or travel dates—idle time you define.</p>
+          </article>
+          <article class="wf-block card">
+            <div class="wf-ph icon-ph" style="min-height:40px">icon</div>
+            <h3>Built-in protections</h3>
+            <p>Wireframe note: highlight screening, coverage tier, and support SLAs.</p>
+          </article>
+          <article class="wf-block card">
+            <div class="wf-ph icon-ph" style="min-height:40px">icon</div>
+            <h3>Short trips, simple flow</h3>
+            <p>Hours to days—not long leases. Clear pricing and mileage in search.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <span class="wf-label">Section</span>
+        <h2>Two sides, one marketplace</h2>
+        <p class="section-intro">Dual CTAs keep the page useful for owners and renters without splitting into two sites yet.</p>
+        <div class="split-audience">
+          <div class="wf-block audience">
+            <h3>Car owners</h3>
+            <ul>
+              <li>Set minimum trip length &amp; daily cap</li>
+              <li>Pricing suggestions by model/area</li>
+              <li>Deposits / deductible summary</li>
+            </ul>
+            <button type="button" class="btn btn-primary">List a vehicle</button>
+          </div>
+          <div class="wf-block audience">
+            <h3>Renters</h3>
+            <ul>
+              <li>Search by neighborhood &amp; dates</li>
+              <li>Instant vs. request-to-book</li>
+              <li>Add-ons (child seat, delivery wireframe)</li>
+            </ul>
+            <button type="button" class="btn">Find a car</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:var(--surface)">
+      <div class="container">
+        <span class="wf-label">Section</span>
+        <h2>Social proof</h2>
+        <div class="wf-block quote">
+          <div class="wf-ph quote-avatar">[ Photo ]</div>
+          <div>
+            <p>“I list weekdays 9–5 when I take transit. Payout covers parking and then some.”</p>
+            <cite>[ Name · City · Owner since YEAR ]</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <span class="wf-label">Section</span>
+        <h2>FAQ</h2>
+        <p class="section-intro">Accordion or linked anchors to help page—wireframe shows copy slots only.</p>
+        <div class="faq">
+          <div class="faq-item">
+            <strong>Who is responsible if something happens during a trip?</strong>
+            <span>[ Short answer + link to policy wireframe ]</span>
+          </div>
+          <div class="faq-item">
+            <strong>Can I decline a booking?</strong>
+            <span>[ … ]</span>
+          </div>
+          <div class="faq-item">
+            <strong>What counts as “idle” availability?</strong>
+            <span>[ … ]</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-bottom:2rem">
+      <div class="container">
+        <span class="wf-label">Closing CTA</span>
+        <div class="wf-block" style="padding:2rem; text-align:center">
+          <h2 style="margin:0 0 0.5rem">Ready when your car is idle.</h2>
+          <p style="margin:0 0 1.25rem; color:var(--muted); max-width:44ch; margin-inline:auto">Join as an owner or browse local cars—same account flow in production.</p>
+          <div class="hero-ctas" style="justify-content:center">
+            <button type="button" class="btn btn-primary">Create account</button>
+            <button type="button" class="btn">Talk to sales (fleet?)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="col">
+          <div class="logo" style="margin-bottom:0.5rem">[Brand]</div>
+          <p>Peer-to-peer short rentals. Wireframe only—replace with final microcopy and legal.</p>
+        </div>
+        <div class="col">
+          <h4>Product</h4>
+          <div class="links">
+            <span>How it works</span>
+            <span>Pricing</span>
+            <span>Mobile apps</span>
+          </div>
+        </div>
+        <div class="col">
+          <h4>Company</h4>
+          <div class="links">
+            <span>About</span>
+            <span>Careers</span>
+            <span>Press</span>
+          </div>
+        </div>
+        <div class="col">
+          <h4>Legal</h4>
+          <div class="links">
+            <span>Terms</span>
+            <span>Privacy</span>
+            <span>Cookies</span>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-bar">
+        <span>© [YEAR] [Brand]. All rights reserved.</span>
+        <span>[ Language · Region selector wireframe ]</span>
+      </div>
+    </div>
+  </footer>
+  <!-- <script type="module" src="/src/js/main.js"></script> -->
+</body>
+</html>

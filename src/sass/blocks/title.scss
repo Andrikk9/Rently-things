@@ -1,0 +1,36 @@
+@use "/src/sass/base/variable.scss" as *;
+
+h1 {
+    font-weight:700;
+    line-height: 1.1;
+    color: $black;
+    font-size: 32px;
+}
+
+.first-title {
+    font-size: 16.8px;
+    font-weight:400;
+    color: $gray;
+    line-height: 1.55;
+}
+
+.title {
+    font-size: 24px;
+    color: $black;
+    font-weight: 700;
+    line-height: 1.55;
+}
+
+.main-text {
+    font-size: 15px;
+    line-height: 1.55;
+    font-weight: 400;
+    color: $gray;
+}
+
+.text-descr {
+    font-size: 14px;
+    line-height: 1.55;
+    color: $gray;
+    font-weight: 400;
+}

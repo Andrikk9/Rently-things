@@ -1,0 +1,14 @@
+//from libs
+@use "/src/sass/libs/modern-normalize.min.css";
+//from ui
+@use "/src/sass/ui/fonts.scss";
+
+//from the base set 
+@use "/src/sass/base/basic.scss";
+@use "/src/sass/base/variable.scss";
+@use "/src/sass/base/buttons.scss";
+
+//from the blocks set
+@use "/src/sass/blocks/title.scss";
+@use "/src/sass/blocks/promo.scss";
+@use "/src/sass/blocks/animation.scss";
