@@ -200,6 +200,12 @@
                 margin-bottom: 24px;
             }
         }
+        &-map {
+            label {
+                display: block;
+                border-radius: 4px;
+            }
+        }
     }
     &-cta {
         display: flex;

@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "normalize-scss": "^8.0.0",
-    "sass": "^1.98.0"
+    "sass": "^1.98.0",
+    "swiper": "^12.1.3"
   }
 }

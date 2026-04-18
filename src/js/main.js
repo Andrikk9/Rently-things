@@ -1,4 +1,13 @@
+import Swiper from 'swiper';
+
+import { Navigation, Pagination } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 import "/src/sass/style.scss";
+
 
 const burger = document.querySelector('.nav__burger');
 const burgerMenu = document.querySelector('.nav__menu');
@@ -56,3 +65,9 @@ if (burger && burgerMenu && buttons && nav) {
 		}, CTA_SLIDE_MS + MENU_SLIDE_MS);
 	});
 }
+
+const swiper = new Swiper('.trust__companies', {
+
+  modules: [Navigation, Pagination],
+  loop: true,
+});
