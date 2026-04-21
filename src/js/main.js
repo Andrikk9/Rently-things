@@ -1,6 +1,6 @@
 import Swiper from 'swiper';
 
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -66,8 +66,15 @@ if (burger && burgerMenu && buttons && nav) {
 	});
 }
 
-const swiper = new Swiper('.trust__companies', {
-
-  modules: [Navigation, Pagination],
-  loop: true,
+const swiper = new Swiper('.swiper-wrapper', {
+	navigation: false,
+	pagination: false,
+	spaceBetween: 20,
+	modules: [Autoplay],
+	autoplay: {
+   		delay: 3000,
+		disableOnInteraction: false,
+	},
+	slidesPerView: 'auto',
+	loop: true,
 });
