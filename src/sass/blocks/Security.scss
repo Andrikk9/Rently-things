@@ -24,13 +24,11 @@
         text-transform: uppercase;
         font-weight: 700;
     }
-    &__wrapper {
-        display: block;
+    &__companies {
+        display: flex;
         width: 100%;
         z-index: -1;
-
-    }
-    &__companies {
+        gap: 20px;
         &-names {
             display: inline-block;
             width: auto;
@@ -39,12 +37,9 @@
             color: $gray;
             font-size: 12px;
             height: 28px;
+            text-wrap: nowrap;
             border: 1px dashed $muted;
         }
-    }
-    .swiper-wrapper {
-        display: flex;
-        gap: 20px;
     }
     .main-text {
         span {

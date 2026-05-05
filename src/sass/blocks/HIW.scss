@@ -3,6 +3,7 @@
 .HIW {
     padding: 52px 0;
     height: auto;
+    border-bottom: 1px solid $muted;
     .main-text {
         margin-top: 8px;
     }
@@ -22,14 +23,15 @@
             border: 1px dashed $muted;
         }
         &-icon {
-            display: inline-block;
+            display: flex;
             width: 30px;
             height: 30px;
-            border: 1px dashed $gray;
+            border: 1px dashed $dark-green;
             border-radius: 100%;
             margin-bottom: 12px;
-            padding-top: 3px;
-            padding-left: 8px;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
         }
         .action-text {
             margin-bottom: 6px;
