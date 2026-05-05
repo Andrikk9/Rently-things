@@ -24,7 +24,7 @@ h1 {
 .main-text {
     font-size: 15px;
     line-height: 1.55;
-    font-weight: 600;
+    font-weight: 500;
     color: $gray;
 }
 
@@ -33,4 +33,11 @@ h1 {
     line-height: 1.55;
     color: $gray;
     font-weight: 400;
+}
+
+.action-text {
+    font-size: 16px;
+    line-height: 1.55;
+    color: $black;
+    font-weight: 600;
 }

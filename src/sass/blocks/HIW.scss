@@ -1,0 +1,38 @@
+@use "/src/sass/base/variable.scss" as *;
+
+.HIW {
+    padding: 52px 0;
+    height: auto;
+    .main-text {
+        margin-top: 8px;
+    }
+    &__steps {
+        margin-top: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        &-item {
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            padding: 20px;
+            width: 100%;
+            height: 158px;
+            border-radius: 20px;
+            border: 1px dashed $muted;
+        }
+        &-icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 1px dashed $gray;
+            border-radius: 100%;
+            margin-bottom: 12px;
+            padding-top: 3px;
+            padding-left: 8px;
+        }
+        .action-text {
+            margin-bottom: 6px;
+        }
+    }
+}
