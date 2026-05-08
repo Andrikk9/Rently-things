@@ -6,7 +6,29 @@
         margin-top: 8px;
     }
     &__wrapper {
-        display: flex;
+        display: grid;
         gap: 20px;
+        margin-top: 32px;
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(3, minmax(170px 1fr));
+        grid-auto-rows: minmax(170px, 1fr);
+        &-item {
+            display: flex;
+            padding: 21.5px 21.5px;
+            flex-direction: column;
+            border: 1px dashed $muted;
+            border-radius: 10px;
+            .action-text {
+                margin-top: 13.5px;
+            }
+            .text-descr {
+                margin-top: 6px;
+            }
+        }   
+        &-icon {
+            display: block;
+            width: 40px;
+            height: 40px;
+        }
     }
 }
