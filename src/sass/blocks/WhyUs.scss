@@ -13,18 +13,34 @@
         grid-template-rows: repeat(3, minmax(170px 1fr));
         grid-auto-rows: minmax(170px, 1fr);
         &-item {
+            position: relative;
             display: flex;
             padding: 21.5px 21.5px;
             flex-direction: column;
             border: 1px dashed $muted;
             border-radius: 10px;
+            overflow: hidden;
             .action-text {
                 margin-top: 13.5px;
             }
             .text-descr {
                 margin-top: 6px;
             }
-        }   
+        }
+        &-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 130%;
+            width: 30px;
+            height: 100%;
+            background-color: $green;
+            transform: skewX(-30deg);
+            opacity: 0.3;
+        }
+        &-item:hover::before {
+            animation: sweepLeft 0.5s ease-in-out forwards;
+        }
         &-icon {
             display: block;
             width: 40px;
