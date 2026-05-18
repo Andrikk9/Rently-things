@@ -10,6 +10,7 @@
         width: 100%;
         height: 65px;
         overflow: hidden;
+        z-index: 2;
         backdrop-filter: blur(3px);
         background: $gray-blurrer;
         transition: all 0.25s ease;

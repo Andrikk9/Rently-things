@@ -5,6 +5,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 import "/src/sass/style.scss";
 
@@ -66,7 +67,7 @@ if (burger && burgerMenu && buttons && nav) {
 	});
 }
 
-const swiper = new Swiper('.swiper-wrapper', {
+const swiper = new Swiper('.SocProof__slider', {
 	navigation: false,
 	pagination: false,
 	spaceBetween: 20,
@@ -75,6 +76,10 @@ const swiper = new Swiper('.swiper-wrapper', {
    		delay: 3000,
 		disableOnInteraction: false,
 	},
-	slidesPerView: 'auto',
+	scrollbar: {
+		el: '.swiper-scrollbar',
+		draggable: true,
+	},
+	slidesPerView: '1',
 	loop: true,
 });
