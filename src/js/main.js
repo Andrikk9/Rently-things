@@ -71,11 +71,11 @@ const swiper = new Swiper('.SocProof__slider', {
 	navigation: false,
 	pagination: false,
 	spaceBetween: 20,
-	modules: [Autoplay],
-	autoplay: {
-   		delay: 3000,
-		disableOnInteraction: false,
-	},
+	// modules: [Autoplay],
+	// autoplay: {
+   	// 	delay: 7000,
+	// 	disableOnInteraction: false,
+	// },
 	scrollbar: {
 		el: '.swiper-scrollbar',
 		draggable: true,
