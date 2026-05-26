@@ -80,6 +80,7 @@ const swiper = new Swiper('.SocProof__slider', {
 		el: '.swiper-scrollbar',
 		draggable: true,
 	},
+	speed: 700,
 	slidesPerView: '1',
 	loop: true,
 });

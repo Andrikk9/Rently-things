@@ -18,6 +18,13 @@
     &__wrapper {
         display: flex;
         flex-direction: column;
+        h2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
         &-info  {
             margin-top: 12px;
             font-size: 13px;
