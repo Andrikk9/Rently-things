@@ -1,6 +1,6 @@
 import Swiper from 'swiper';
 
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, Scrollbar } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -70,12 +70,12 @@ if (burger && burgerMenu && buttons && nav) {
 const swiper = new Swiper('.SocProof__slider', {
 	navigation: false,
 	pagination: false,
-	spaceBetween: 20,
-	// modules: [Autoplay],
-	// autoplay: {
-   	// 	delay: 7000,
-	// 	disableOnInteraction: false,
-	// },
+	spaceBetween: 15,
+	modules: [Autoplay, Scrollbar],
+	autoplay: {
+   		delay: 5000,
+		disableOnInteraction: false,
+	},
 	scrollbar: {
 		el: '.swiper-scrollbar',
 		draggable: true,
