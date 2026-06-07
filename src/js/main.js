@@ -84,3 +84,15 @@ const swiper = new Swiper('.SocProof__slider', {
 	slidesPerView: '1',
 	loop: true,
 });
+
+const faqItems = document.querySelectorAll('.FAQ__wrapper-item');
+
+faqItems.forEach(item => {
+	const textDescr = item.querySelector('.text-descr');
+	item.addEventListener('click', (e) => {
+		e.stopPropagation();
+		item.classList.toggle('FAQ__wrapper-item_active');
+		textDescr.classList.toggle('text-descr_expanded');
+		console.log('FAQ toggled:', item.classList.contains('FAQ__wrapper-item_active'));
+	});
+});
