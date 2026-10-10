@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-label="Car photo placeholder">
+  <defs>
+    <pattern id="stripes" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <rect width="8" height="16" fill="#ffffff" fill-opacity="0.22"/>
+    </pattern>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef4f6"/>
+      <stop offset="1" stop-color="#b8c9cf"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="260" fill="#dcebe2"/>
+  <rect width="400" height="260" fill="url(#stripes)"/>
+  <g transform="translate(-4 -16)">
+  <ellipse cx="204" cy="206" rx="162" ry="9" fill="#000" fill-opacity="0.1"/>
+  <path d="M58 188c-2-12 0-22 8-27l30-10 44-36c8-6 18-10 30-10h80c12 0 22 4 30 11l32 29 26 6c10 3 14 10 14 20v14c0 4-3 7-7 7H64c-3 0-6-2-6-4z" fill="#4b4b4b"/>
+  <path d="M150 116h58v30h-92z" fill="url(#glass)"/>
+  <path d="M216 116h54c4 0 7 2 10 5l24 25h-88z" fill="url(#glass)"/>
+  <path d="M212 148v38" stroke="#000" stroke-opacity="0.18" stroke-width="2"/>
+  <rect x="186" y="156" width="16" height="4" rx="2" fill="#000" fill-opacity="0.25"/>
+  <rect x="268" y="156" width="16" height="4" rx="2" fill="#000" fill-opacity="0.25"/>
+  <rect x="332" y="160" width="16" height="7" rx="3" fill="#fff9d9"/>
+  <rect x="58" y="164" width="10" height="9" rx="2" fill="#ff6b5b"/>
+  <circle cx="118" cy="193" r="30" fill="#dcebe2"/>
+  <circle cx="292" cy="193" r="30" fill="#dcebe2"/>
+  <circle cx="118" cy="193" r="24" fill="#1a1a1a"/>
+  <circle cx="292" cy="193" r="24" fill="#1a1a1a"/>
+  <circle cx="118" cy="193" r="11" fill="#c9d3d7"/>
+  <circle cx="292" cy="193" r="11" fill="#c9d3d7"/>
+  </g>
+</svg>

@@ -35,16 +35,6 @@
             }
         }
     }
-    .footer__grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media screen and (min-width: 576px) and (max-width: 767px) {
-    .footer__grid {
-        grid-template-rows: repeat(2, auto);
-        grid-template-columns: repeat(3, 1fr);
-    }
 }
 
 @media screen and (min-width: 768px) {
@@ -159,17 +149,6 @@
                 line-clamp: unset;
                 width: 100%;
             }
-        }
-    }
-    .footer {
-        &__grid {
-            grid-template-columns: 189px repeat(3, 1fr);
-        }
-        &__block:first-child {
-            grid-column: 1 / 2;
-        }
-        &__bottombar {
-            flex-direction: row;
         }
     }
 }

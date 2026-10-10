@@ -1,0 +1,29 @@
+// Styles of the main resource (catalog.html and the other inner pages).
+// The landing keeps its own entry: style.scss (imported from main.js).
+
+//from libs
+@use "/src/sass/libs/modern-normalize.min.css";
+//from ui
+@use "/src/sass/ui/fonts.scss";
+
+//from the base set
+@use "/src/sass/base/basic.scss";
+@use "/src/sass/base/variable.scss";
+@use "/src/sass/base/buttons.scss";
+@use "/src/sass/base/forms.scss";
+@use "/src/sass/base/icons.scss";
+
+//shared with the landing
+@use "/src/sass/blocks/title.scss";
+@use "/src/sass/blocks/animation.scss";
+@use "/src/sass/blocks/footer.scss";
+@use "/src/sass/blocks/modal.scss";
+
+//main resource blocks
+@use "/src/sass/blocks/header.scss";
+@use "/src/sass/blocks/page.scss";
+
+//pages
+@use "/src/sass/pages/catalog.scss";
+@use "/src/sass/pages/car.scss";
+@use "/src/sass/pages/info.scss";

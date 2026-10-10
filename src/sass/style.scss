@@ -7,6 +7,8 @@
 @use "/src/sass/base/basic.scss";
 @use "/src/sass/base/variable.scss";
 @use "/src/sass/base/buttons.scss";
+@use "/src/sass/base/forms.scss";
+@use "/src/sass/base/icons.scss";
 
 //from the blocks set
 @use "/src/sass/blocks/title.scss";
@@ -20,4 +22,5 @@
 @use "/src/sass/blocks/FAQ.scss";
 @use "/src/sass/blocks/cta.scss";
 @use "/src/sass/blocks/footer.scss";
+@use "/src/sass/blocks/modal.scss";
 @use "/src/sass/blocks/media.scss";

@@ -2,6 +2,7 @@
 
 .HIW {
     padding: 52px 0;
+    scroll-margin-top: 65px; // fixed nav height, for the #how-it-works link
     height: auto;
     border-bottom: 1px solid $muted;
     .main-text {
