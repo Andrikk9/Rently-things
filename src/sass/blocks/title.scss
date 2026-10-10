@@ -5,12 +5,13 @@ h1 {
     line-height: 1.1;
     color: $black;
     font-size: 32px;
+    letter-spacing: -1px;
 }
 
 .first-title {
     font-size: 16.8px;
     font-weight:400;
-    color: $gray;
+    color: $light-gray;
     line-height: 1.55;
 }
 
@@ -25,13 +26,13 @@ h1 {
     font-size: 15px;
     line-height: 1.55;
     font-weight: 500;
-    color: $gray;
+    color: $light-gray;
 }
 
 .text-descr {
     font-size: 14px;
     line-height: 1.55;
-    color: $gray;
+    color: $light-gray;
     font-weight: 400;
 }
 
@@ -39,5 +40,18 @@ h1 {
     font-size: 16px;
     line-height: 1.55;
     color: $black;
-    font-weight: 700;
+    font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+    .action-text {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    h1 {
+        font-size: 40px;
+        letter-spacing: -1.5px;
+    }
 }
