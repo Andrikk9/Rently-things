@@ -1,68 +1,23 @@
 @use "/src/sass/base/variable.scss" as *;
 
 .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+    display: inline-block;
     padding: 10px 18px;
     height: 40px;
     width: fit-content;
     border-radius: 999px;
     text-wrap: nowrap;
-    font-family: inherit;
     font-weight: 600;
     font-size: 14px;
-    line-height: 1;
     text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-    &:focus-visible {
-        outline: 2px solid $dark-green;
-        outline-offset: 2px;
-    }
 }
 
 .btn-white {
     background-color: $light;
-    border: 1px solid $border;
-    color: $black;
-    &:hover {
-        border-color: $dark-green;
-    }
+    border: 1px solid #c9d3d7;
 }
 .btn-green {
     background-color: $spring-green;
     border: none;
     color: $white;
-    &:hover {
-        background-color: $dark-green;
-        color: $spring-green;
-    }
-}
-
-.btn-block {
-    width: 100%;
-}
-
-.btn-sm {
-    height: 32px;
-    padding: 6px 14px;
-    font-size: 13px;
-}
-
-// text-only button, e.g. "Log in" inside a sentence
-.btn-link {
-    padding: 0;
-    border: none;
-    background: none;
-    font: inherit;
-    font-weight: 700;
-    color: $dark-green;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    cursor: pointer;
-    &:hover {
-        color: $spring-green;
-    }
 }
