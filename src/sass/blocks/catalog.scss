@@ -1,0 +1,2063 @@
+// Styles for catalog.html
+// Self-contained: compile this one file and link the result in catalog.html.
+// Shared parts (base, buttons, header, footer, sign-up window) are repeated in every page file,
+// in the same order as before, because in CSS the later rule wins.
+
+@use "/src/sass/base/variable.scss" as *;
+
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.fieldset {
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    border: none;
+}
+
+// float takes the legend out of the fieldset border, so it lays out like a normal heading
+.legend {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: $gray;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    + * {
+        clear: both;
+    }
+}
+
+// label + input stacked
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    &__label {
+        font-size: 13px;
+        font-weight: 600;
+        color: $gray;
+    }
+    &__hint {
+        font-size: 12px;
+        color: $light-gray;
+    }
+    &__input {
+        width: 100%;
+        height: 42px;
+        padding: 0 14px;
+        border: 1px solid $border;
+        border-radius: 10px;
+        background-color: $surface;
+        font-family: inherit;
+        font-size: 14px;
+        color: $gray;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        &::placeholder {
+            color: $placeholder;
+        }
+        &:hover {
+            border-color: $placeholder;
+        }
+        &:focus {
+            outline: none;
+            border-color: $spring-green;
+            box-shadow: 0 0 0 3px rgba(9, 229, 127, 0.2);
+        }
+    }
+}
+
+select.field__input {
+    padding-right: 38px;
+    appearance: none;
+    background: $surface url('/src/icons/chevron-down.svg') right 12px center / 16px no-repeat;
+    cursor: pointer;
+}
+
+textarea.field__input {
+    height: auto;
+    min-height: 110px;
+    padding: 12px 14px;
+    resize: vertical;
+}
+
+// checkbox / radio with text
+.check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: $light-gray;
+    cursor: pointer;
+    input {
+        flex-shrink: 0;
+        width: 16px;
+        height: 16px;
+        margin: 2px 0 0;
+        accent-color: $dark-green;
+        cursor: pointer;
+    }
+    a {
+        color: $dark-green;
+        font-weight: 600;
+    }
+    &__count {
+        margin-left: auto;
+        font-size: 12px;
+        color: $placeholder;
+    }
+}
+
+// pill switch built from radio inputs: Hour | Day
+.segmented {
+    display: inline-flex;
+    padding: 3px;
+    border: 1px solid $border;
+    border-radius: 999px;
+    background-color: $surface;
+    label {
+        position: relative;
+        flex: 1;
+    }
+    input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+    label > span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        height: 32px;
+        padding: 0 14px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+        color: $light-gray;
+        text-wrap: nowrap;
+        cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    input:checked + span {
+        background-color: $dark-green;
+        color: $spring-green;
+    }
+    input:focus-visible + span {
+        outline: 2px solid $dark-green;
+        outline-offset: 2px;
+    }
+}
+
+// dashed pill like the "Trusted by" names on the landing; works with radio or checkbox
+.chip {
+    position: relative;
+    display: inline-flex;
+    input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+    > span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        height: 32px;
+        padding: 0 14px;
+        border: 1px dashed $muted;
+        border-radius: 999px;
+        font-size: 13px;
+        color: $gray;
+        text-wrap: nowrap;
+        cursor: pointer;
+        transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+        &:hover {
+            border-color: $dark-green;
+        }
+    }
+    input:checked + span {
+        border: 1px solid $dark-green;
+        background-color: $dark-green;
+        color: $spring-green;
+        font-weight: 600;
+    }
+    input:focus-visible + span {
+        outline: 2px solid $dark-green;
+        outline-offset: 2px;
+    }
+}
+
+// ----------------------------------------------------------------------
+// Icons  (from base/icons.scss)
+// ----------------------------------------------------------------------
+
+// Icons are painted with currentColor through a mask (same trick as the FAQ chevron),
+// so they follow the text color of whatever they sit in.
+.icon {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    background-color: currentColor;
+    mask: center / contain no-repeat;
+    &_lg {
+        width: 22px;
+        height: 22px;
+    }
+    &_arrow-right { mask-image: url('/src/icons/arrow-right.svg'); }
+    &_calendar { mask-image: url('/src/icons/calendar.svg'); }
+    &_camera { mask-image: url('/src/icons/camera.svg'); }
+    &_car { mask-image: url('/src/icons/car.svg'); }
+    &_card { mask-image: url('/src/icons/card.svg'); }
+    &_check { mask-image: url('/src/icons/check.svg'); }
+    &_chevron-left { mask-image: url('/src/icons/chevron-left.svg'); }
+    &_chevron-right { mask-image: url('/src/icons/chevron-right.svg'); }
+    &_clock { mask-image: url('/src/icons/clock.svg'); }
+    &_fuel { mask-image: url('/src/icons/fuel.svg'); }
+    &_gauge { mask-image: url('/src/icons/gauge.svg'); }
+    &_gearbox { mask-image: url('/src/icons/gearbox.svg'); }
+    &_grid { mask-image: url('/src/icons/grid.svg'); }
+    &_heart { mask-image: url('/src/icons/heart.svg'); }
+    &_id-card { mask-image: url('/src/icons/id-card.svg'); }
+    &_key { mask-image: url('/src/icons/key.svg'); }
+    &_lifebuoy { mask-image: url('/src/icons/lifebuoy.svg'); }
+    &_list { mask-image: url('/src/icons/list.svg'); }
+    &_map { mask-image: url('/src/icons/map.svg'); }
+    &_message { mask-image: url('/src/icons/message.svg'); }
+    &_phone { mask-image: url('/src/icons/phone.svg'); }
+    &_pin { mask-image: url('/src/icons/map-pin.svg'); }
+    &_search { mask-image: url('/src/icons/search.svg'); }
+    &_shield { mask-image: url('/src/icons/shield.svg'); }
+    &_sliders { mask-image: url('/src/icons/sliders.svg'); }
+    &_smartphone { mask-image: url('/src/icons/smartphone.svg'); }
+    &_star { mask-image: url('/src/icons/star.svg'); }
+    &_users { mask-image: url('/src/icons/users.svg'); }
+    &_wallet { mask-image: url('/src/icons/wallet.svg'); }
+    &_x { mask-image: url('/src/icons/x.svg'); }
+    &_zap { mask-image: url('/src/icons/zap.svg'); }
+}
+
+// ----------------------------------------------------------------------
+// Typography  (from blocks/title.scss)
+// ----------------------------------------------------------------------
+
+h1 {
+    font-weight:700;
+    line-height: 1.1;
+    color: $black;
+    font-size: 32px;
+    letter-spacing: -1px;
+}
+
+.first-title {
+    font-size: 16.8px;
+    font-weight:400;
+    color: $light-gray;
+    line-height: 1.55;
+}
+
+.title {
+    font-size: 24px;
+    color: $black;
+    font-weight: 700;
+    line-height: 1.55;
+}
+
+.main-text {
+    font-size: 15px;
+    line-height: 1.55;
+    font-weight: 500;
+    color: $light-gray;
+}
+
+.text-descr {
+    font-size: 14px;
+    line-height: 1.55;
+    color: $light-gray;
+    font-weight: 400;
+}
+
+.action-text {
+    font-size: 16px;
+    line-height: 1.55;
+    color: $black;
+    font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+    .action-text {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    h1 {
+        font-size: 40px;
+        letter-spacing: -1.5px;
+    }
+}
+
+// ----------------------------------------------------------------------
+// Animations  (from blocks/animation.scss)
+// ----------------------------------------------------------------------
+
+@keyframes sweepLeft {
+    from {
+        right: 100%;
+    }
+    to {
+        right: -77px;
+    }
+}
+
+// ----------------------------------------------------------------------
+// Footer  (from blocks/footer.scss)
+// ----------------------------------------------------------------------
+
+.footer {
+    height: auto;
+    padding: 40px 0;
+    &__grid {
+        padding-bottom: 32px;
+        display: grid;
+        gap: 24px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        border-bottom: 1px dashed $muted;
+    }
+    &__logo {
+        display: block;
+        width: 70px;
+    }
+    &__block {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 5.5px;
+        padding-left: 0;        
+        &:first-child {
+            grid-column: 1 / -1;
+        }
+        
+        &-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    }
+    &__link {
+        a {
+            font-size: 14px;
+            line-height: 1.55;
+            color: $light-gray;
+            font-weight: 400;
+            text-decoration: none;
+        }
+    }
+    &__bottombar {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        padding-top: 20px;
+        gap: 13px;
+    }
+}
+.footer {
+    &__link a:hover {
+        color: $dark-green;
+        text-decoration: underline;
+    }
+    // Language · Region selectors in the bottom bar
+    &__locale {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        select {
+            height: 32px;
+            padding: 0 32px 0 12px;
+            border: 1px dashed $muted;
+            border-radius: 999px;
+            appearance: none;
+            background: transparent url('/src/icons/chevron-down.svg') right 10px center / 14px no-repeat;
+            font-family: inherit;
+            font-size: 13px;
+            color: $light-gray;
+            cursor: pointer;
+            &:hover {
+                border-color: $dark-green;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .footer__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    .footer__grid {
+        grid-template-rows: repeat(2, auto);
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .footer {
+        &__grid {
+            grid-template-columns: 189px repeat(3, 1fr);
+        }
+        &__block:first-child {
+            grid-column: 1 / 2;
+        }
+        &__bottombar {
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+}
+
+// ----------------------------------------------------------------------
+// Sign-up / log-in window  (from blocks/modal.scss)
+// ----------------------------------------------------------------------
+
+// Sign up / Log in overlays.
+// They are native popovers: <button popovertarget="signup"> opens one, Esc or a click outside closes it — no JS needed.
+.modal {
+    width: min(100% - 24px, 540px);
+    max-height: calc(100dvh - 24px);
+    margin: auto;
+    padding: 24px 20px;
+    border: 1px solid $border;
+    border-radius: 16px;
+    background-color: $light;
+    color: $gray;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    box-shadow: $shadow;
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+    transition: opacity 0.25s ease, transform 0.25s ease, overlay 0.25s ease allow-discrete, display 0.25s ease allow-discrete;
+    &:popover-open {
+        opacity: 1;
+        transform: none;
+    }
+    &::backdrop {
+        background-color: rgba(26, 26, 26, 0.45);
+        backdrop-filter: blur(3px);
+    }
+    &_narrow {
+        width: min(100% - 24px, 420px);
+    }
+    &__head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+    &__label {
+        display: inline-block;
+        padding: 2px 10px;
+        height: 22px;
+        font-size: 14px;
+        font-weight: 700;
+        color: $dark-green;
+        border: 1px dashed $dark-green;
+        border-radius: 5px;
+        text-transform: uppercase;
+    }
+    &__close {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 38px;
+        height: 38px;
+        border: 1px dashed $gray;
+        border-radius: 10px;
+        background-color: $light;
+        color: $gray;
+        cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        &:hover {
+            background-color: $dark-green;
+            color: $spring-green;
+        }
+    }
+    &__title {
+        line-height: 1.25;
+    }
+    &__intro {
+        margin-top: 6px;
+    }
+    &__steps {
+        display: flex;
+        gap: 8px;
+        margin: 20px 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: step;
+    }
+    &__step {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        color: $light-gray;
+        counter-increment: step;
+        &::before {
+            content: counter(step);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 26px;
+            height: 26px;
+            border: 1px dashed $dark-green;
+            border-radius: 100%;
+            font-size: 12px;
+            color: $dark-green;
+        }
+        &::after {
+            content: '';
+            order: -1;
+            display: block;
+            height: 3px;
+            border-radius: 3px;
+            background-color: $border;
+        }
+        &_active {
+            color: $black;
+            &::before {
+                border: 1px solid $spring-green;
+                background-color: $spring-green;
+                color: $white;
+            }
+            &::after {
+                background-color: $spring-green;
+            }
+        }
+    }
+    &__social {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    &__divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 18px 0;
+        font-size: 13px;
+        color: $light-gray;
+        &::before,
+        &::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: $muted;
+        }
+    }
+    &__foot {
+        margin-top: 18px;
+        padding-top: 16px;
+        border-top: 1px dashed $muted;
+        text-align: center;
+    }
+}
+
+@starting-style {
+    .modal:popover-open {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+    }
+}
+
+// the form inside the overlays
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    &__row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    &__inline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        a {
+            font-size: 13px;
+            font-weight: 600;
+            color: $dark-green;
+        }
+    }
+    &__submit {
+        margin-top: 4px;
+    }
+    &__note {
+        font-size: 12px;
+        color: $light-gray;
+        text-align: center;
+    }
+    legend {
+        margin-bottom: 6px;
+        padding: 0;
+    }
+    .segmented {
+        display: flex;
+    }
+}
+
+.modal_narrow .modal__social {
+    grid-template-columns: 1fr 1fr;
+}
+
+body:has(.modal:popover-open) {
+    overflow: hidden;
+}
+
+@media screen and (min-width: 576px) {
+    .modal {
+        padding: 28px;
+        &__social {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    .form__row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+// ----------------------------------------------------------------------
+// Header & mobile menu  (from blocks/header.scss)
+// ----------------------------------------------------------------------
+
+// Header of the main resource. Looks like the landing nav (.promo .nav),
+// but the mobile menu is a native popover, so it works without JS.
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: $header-height;
+    backdrop-filter: blur(3px);
+    background: $gray-blurrer;
+    border-bottom: 1px solid $line;
+    &__bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        height: 100%;
+        padding: 10px 13px;
+    }
+    &__logo {
+        display: block;
+        img {
+            display: block;
+            width: 70px;
+        }
+    }
+    &__tabs {
+        display: none;
+        ul {
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+    }
+    &__link {
+        position: relative;
+        display: inline-block;
+        min-height: 22px;
+        font-size: 14px;
+        line-height: 1.55;
+        text-decoration: none;
+        color: $gray;
+        border-radius: 2px;
+        z-index: 0;
+        isolation: isolate;
+        overflow: hidden;
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            border-radius: inherit;
+            background: $dark-green;
+            transition: transform 0.3s ease;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            pointer-events: none;
+        }
+        &:hover::before,
+        &_active::before {
+            transform: scaleY(1);
+        }
+        &:hover,
+        &_active {
+            color: $spring-green;
+        }
+        &_active {
+            font-weight: 700;
+        }
+    }
+    &__actions {
+        display: none;
+        gap: 10px;
+    }
+    &__burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        border-radius: 10px;
+        border: 1px dashed $gray;
+        background: $light;
+        cursor: pointer;
+        span {
+            width: 20px;
+            height: 2px;
+            border-radius: 999px;
+            background: $gray;
+            transition: transform 0.25s ease, opacity 0.2s ease;
+        }
+    }
+}
+
+// burger turns into a cross while the menu is open
+body:has(.menu:popover-open) .header__burger span {
+    &:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    &:nth-child(2) {
+        opacity: 0;
+    }
+    &:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+.menu {
+    position: fixed;
+    inset: $header-height 0 auto 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px 16px 24px;
+    border: none;
+    border-bottom: 1px solid $line;
+    background: rgba(231, 239, 242, 0.97);
+    color: $gray;
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: opacity 0.25s ease, transform 0.25s ease, overlay 0.25s ease allow-discrete, display 0.25s ease allow-discrete;
+    &:popover-open {
+        opacity: 1;
+        transform: none;
+    }
+    &::backdrop {
+        background-color: rgba(26, 26, 26, 0.25);
+    }
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    &__link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 12px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        color: $gray;
+        text-decoration: none;
+        &:hover,
+        &_active {
+            background-color: $dark-green;
+            color: $spring-green;
+        }
+    }
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px dashed $gray;
+    }
+}
+
+@starting-style {
+    .menu:popover-open {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .header {
+        &__tabs,
+        &__actions {
+            display: flex;
+        }
+        &__burger {
+            display: none;
+        }
+    }
+    .menu {
+        display: none;
+    }
+}
+
+// ----------------------------------------------------------------------
+// Page layout & shared blocks  (from blocks/page.scss)
+// ----------------------------------------------------------------------
+
+// Shell and shared building blocks of the main resource pages.
+// Spacing, borders and type follow the landing: 52px sections, dashed cards, solid section dividers.
+
+.page {
+    padding-top: $header-height;
+}
+
+.label {
+    display: inline-block;
+    padding: 2px 10px;
+    width: fit-content;
+    height: 22px;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: $dark-green;
+    border: 1px dashed $dark-green;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.section {
+    padding: 52px 0;
+    border-top: 1px solid $muted;
+    &__head {
+        max-width: 640px;
+        margin-bottom: 32px;
+        .label {
+            margin-bottom: 12px;
+        }
+        .main-text {
+            margin-top: 8px;
+        }
+    }
+}
+
+// top block of every inner page
+.page-hero {
+    padding: 40px 0 48px;
+    &__grid {
+        display: grid;
+        gap: 32px;
+    }
+    &__text {
+        display: flex;
+        flex-direction: column;
+        .label {
+            margin-bottom: 14px;
+        }
+        h1 {
+            margin-bottom: 16px;
+        }
+    }
+    &__ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+    }
+    &__aside {
+        align-self: center;
+    }
+}
+
+.breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 20px;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+    color: $light-gray;
+    li {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    li + li::before {
+        content: '/';
+        color: $muted;
+    }
+    a {
+        color: $light-gray;
+        text-decoration: none;
+        &:hover {
+            color: $dark-green;
+            text-decoration: underline;
+        }
+    }
+    [aria-current] {
+        color: $black;
+        font-weight: 600;
+    }
+}
+
+// sticky in-page navigation: About · Careers · Press, Terms · Privacy · Cookies
+.subnav {
+    position: sticky;
+    top: $header-height;
+    z-index: 5;
+    border-top: 1px solid $muted;
+    border-bottom: 1px solid $muted;
+    background-color: rgba(231, 239, 242, 0.92);
+    backdrop-filter: blur(3px);
+    ul {
+        display: flex;
+        gap: 8px;
+        margin: 0;
+        padding: 10px 0;
+        list-style: none;
+        overflow-x: auto;
+    }
+    a {
+        display: inline-flex;
+        align-items: center;
+        height: 32px;
+        padding: 0 14px;
+        border: 1px dashed $muted;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+        color: $gray;
+        text-decoration: none;
+        text-wrap: nowrap;
+        &:hover {
+            border-color: $dark-green;
+            background-color: $dark-green;
+            color: $spring-green;
+        }
+    }
+}
+
+[id] {
+    scroll-margin-top: calc($header-height + 64px);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 24px;
+    padding: 0 9px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    text-wrap: nowrap;
+    background-color: $dark-green;
+    color: $spring-green;
+    .icon {
+        width: 12px;
+        height: 12px;
+    }
+    &_light {
+        background-color: rgba(255, 255, 255, 0.88);
+        color: $gray;
+    }
+    &_outline {
+        background-color: transparent;
+        border: 1px dashed $dark-green;
+        color: $dark-green;
+    }
+}
+
+// green "available" dot
+.dot {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background-color: $spring-green;
+    box-shadow: 0 0 0 3px rgba(9, 229, 127, 0.2);
+}
+
+// dashed card — same as the landing tiles
+.card {
+    padding: 24px;
+    border: 1px dashed $muted;
+    border-radius: 12px;
+    &_solid {
+        border: 1px solid $border;
+        background-color: $surface;
+    }
+}
+
+// icon tiles with the green sweep on hover (landing "Why use the platform")
+.tiles {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    &__item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 21.5px;
+        border: 1px dashed $muted;
+        border-radius: 10px;
+        overflow: hidden;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 130%;
+            width: 30px;
+            height: 100%;
+            background-color: $green;
+            transform: skewX(-30deg);
+            opacity: 0.3;
+        }
+        &:hover::before {
+            animation: sweepLeft 0.5s ease-in-out forwards;
+        }
+        .action-text {
+            margin-top: 13.5px;
+        }
+        .text-descr {
+            margin-top: 6px;
+        }
+    }
+    &__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background-color: $dark-green;
+        color: $spring-green;
+    }
+}
+
+// numbered steps (landing "How it works")
+.steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+    &__item {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        border: 1px dashed $muted;
+        border-radius: 12px;
+        counter-increment: step;
+        &::before {
+            content: counter(step);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            margin-bottom: 12px;
+            border: 1px dashed $dark-green;
+            border-radius: 100%;
+            font-size: 14px;
+        }
+        .action-text {
+            margin-bottom: 6px;
+        }
+    }
+}
+
+// list with green check marks
+.checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+        display: flex;
+        gap: 10px;
+        font-size: 14px;
+        line-height: 1.55;
+        color: $light-gray;
+        &::before {
+            content: '';
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            border-radius: 100%;
+            background-color: $dark-green;
+            mask: url('/src/icons/check.svg') center / 12px no-repeat, linear-gradient(#000 0 0);
+            mask-composite: exclude;
+        }
+    }
+    b {
+        color: $black;
+        font-weight: 600;
+    }
+}
+
+// FAQ accordion on native <details>: looks like the landing FAQ, opens without JS
+.accordion {
+    border-top: 1px solid $muted;
+    &__item {
+        position: relative;
+        border-bottom: 1px solid $muted;
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: $green;
+            transition: width 0.4s ease;
+        }
+        &:hover::after {
+            width: 100%;
+        }
+        &[open] .accordion__question::after {
+            transform: rotate(-180deg);
+        }
+        .text-descr {
+            padding: 0 0 18px;
+            max-width: 760px;
+        }
+    }
+    &__question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 18px 0;
+        cursor: pointer;
+        list-style: none;
+        transition: color 0.4s ease;
+        &::-webkit-details-marker {
+            display: none;
+        }
+        &::after {
+            content: '';
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            background-color: $green;
+            mask: url('/src/icons/chevron-down.svg') center / contain no-repeat;
+            transition: transform 0.4s ease;
+        }
+        &:hover {
+            color: $green;
+        }
+    }
+}
+
+// call-to-action tile (landing "Ready when your car is idle.")
+.cta-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px;
+    border: 1px dashed $muted;
+    border-radius: 12px;
+    text-align: center;
+    .main-text {
+        margin-top: 8px;
+        max-width: 520px;
+    }
+    &__btns {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+}
+
+// big numbers row
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    &__item {
+        padding: 20px;
+        border: 1px dashed $muted;
+        border-radius: 12px;
+    }
+    &__value {
+        display: block;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.1;
+        color: $dark-green;
+        letter-spacing: -0.5px;
+    }
+    &__caption {
+        display: block;
+        margin-top: 6px;
+        font-size: 13px;
+        color: $light-gray;
+    }
+}
+
+// data tables: fees, plans, deductibles
+.table-wrap {
+    border: 1px dashed $muted;
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    font-size: 14px;
+    th,
+    td {
+        padding: 14px 18px;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px dashed $muted;
+    }
+    tr:last-child td {
+        border-bottom: none;
+    }
+    thead th {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        color: $dark-green;
+        background-color: rgba(0, 91, 62, 0.05);
+    }
+    tbody th {
+        font-weight: 600;
+        color: $black;
+    }
+    td {
+        color: $light-gray;
+    }
+    .icon_check {
+        color: $dark-green;
+    }
+}
+
+// two columns that stack on mobile
+.split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+@media screen and (min-width: 576px) {
+    .stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .tiles {
+        grid-template-columns: repeat(3, 1fr);
+        &_2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        &_4 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    .steps {
+        grid-template-columns: repeat(3, 1fr);
+        &_4 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    .split {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .page-hero {
+        padding: 56px 0 64px;
+        &__grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+    }
+    .tiles_4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .steps_4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .cta-tile {
+        width: 70%;
+        margin: 0 auto;
+    }
+}
+
+// links inside running text
+.text-descr a,
+.main-text a,
+.checklist a {
+    color: $dark-green;
+    font-weight: 600;
+    &:hover {
+        color: $green;
+    }
+}
+
+// spacing between blocks that follow each other
+.card {
+    > .action-text + * {
+        margin-top: 14px;
+    }
+    > * + .text-descr {
+        margin-top: 14px;
+    }
+    .rules,
+    .steps {
+        grid-template-columns: 1fr;
+    }
+}
+
+.tiles + .stats {
+    margin-top: 20px;
+}
+
+.tiles__icon .icon {
+    width: 20px;
+    height: 20px;
+}
+
+.page-hero__aside .stats {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+// compact numbered list inside a card
+.card .steps {
+    gap: 14px;
+    &__item {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        padding: 0;
+        border: none;
+        &::before {
+            flex-shrink: 0;
+            margin-bottom: 0;
+        }
+    }
+}
+
+// ----------------------------------------------------------------------
+// Catalog page  (from pages/catalog.scss)
+// ----------------------------------------------------------------------
+
+.catalog-hero {
+    padding: 40px 0 24px;
+    .label {
+        margin-bottom: 14px;
+    }
+    h1 {
+        margin-bottom: 8px;
+    }
+}
+
+// Where · From · Until · Rent by · Search
+.search {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 24px;
+    padding: 14px;
+    border: 1px solid $border;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.45);
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 8px 14px;
+        border: 1px solid $border;
+        border-radius: 12px;
+        background-color: $surface;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        &:focus-within {
+            border-color: $spring-green;
+            box-shadow: 0 0 0 3px rgba(9, 229, 127, 0.2);
+        }
+    }
+    &__label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: $dark-green;
+    }
+    &__input {
+        width: 100%;
+        padding: 0;
+        border: none;
+        background: none;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        color: $gray;
+        &:focus {
+            outline: none;
+        }
+        &::placeholder {
+            color: $placeholder;
+            font-weight: 400;
+        }
+    }
+    &__mode {
+        margin: 0;
+        min-width: 0;
+        .segmented {
+            display: flex;
+            padding: 2px;
+            label > span {
+                height: 24px;
+            }
+        }
+    }
+    &__submit {
+        width: 100%;
+        height: 48px;
+        .icon {
+            width: 18px;
+            height: 18px;
+        }
+    }
+}
+
+// quick category chips under the search
+.categories {
+    display: flex;
+    gap: 8px;
+    margin: 20px -16px 0;
+    padding: 2px 16px 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.catalog {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 24px 0 52px;
+}
+
+// Filters: bottom sheet (popover) on mobile, sticky sidebar on desktop
+.filters {
+    position: fixed;
+    inset: auto 0 0 0;
+    width: 100%;
+    max-height: 88dvh;
+    margin: 0;
+    padding: 0;
+    border: 1px solid $border;
+    border-radius: 16px 16px 0 0;
+    background-color: $light;
+    color: $gray;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transform: translateY(100%);
+    transition: transform 0.3s ease, overlay 0.3s ease allow-discrete, display 0.3s ease allow-discrete;
+    &:popover-open {
+        transform: none;
+    }
+    &::backdrop {
+        background-color: rgba(26, 26, 26, 0.45);
+    }
+    &__head {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 20px;
+        border-bottom: 1px dashed $muted;
+        background-color: $light;
+    }
+    &__title {
+        font-size: 16px;
+        font-weight: 700;
+        color: $black;
+    }
+    &__close {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 36px;
+        height: 36px;
+        border: 1px dashed $gray;
+        border-radius: 10px;
+        background: $light;
+        color: $gray;
+        cursor: pointer;
+    }
+    &__reset {
+        font-size: 13px;
+        font-weight: 600;
+        color: $dark-green;
+    }
+    &__body {
+        padding: 0 20px;
+    }
+    &__group {
+        padding: 18px 0;
+        border-bottom: 1px dashed $muted;
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+    &__options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    &__chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    &__range {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: end;
+        gap: 8px;
+        span {
+            padding-bottom: 12px;
+            color: $light-gray;
+        }
+    }
+    .segmented {
+        display: flex;
+    }
+    &__actions {
+        position: sticky;
+        bottom: 0;
+        display: flex;
+        gap: 10px;
+        padding: 14px 20px;
+        border-top: 1px dashed $muted;
+        background-color: $light;
+        .btn {
+            flex: 1;
+        }
+    }
+}
+
+@starting-style {
+    .filters:popover-open {
+        transform: translateY(100%);
+    }
+}
+
+.results {
+    min-width: 0;
+    &__toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid $muted;
+    }
+    &__count {
+        font-size: 15px;
+        color: $light-gray;
+        b {
+            color: $black;
+        }
+    }
+    &__controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        .field__input {
+            height: 40px;
+            width: auto;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .segmented label > span {
+            padding: 0 12px;
+        }
+        .segmented .icon {
+            width: 15px;
+            height: 15px;
+        }
+    }
+    &__view-text {
+        display: none;
+    }
+    &__applied {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 0 20px;
+    }
+    &__tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        height: 28px;
+        padding: 0 10px 0 12px;
+        border: 1px solid $border;
+        border-radius: 999px;
+        background-color: $surface;
+        font-size: 12px;
+        font-weight: 600;
+        color: $gray;
+        text-decoration: none;
+        .icon {
+            width: 12px;
+            height: 12px;
+        }
+        &:hover {
+            border-color: $dark-green;
+            color: $dark-green;
+        }
+    }
+    &__clear {
+        font-size: 12px;
+        font-weight: 700;
+        color: $dark-green;
+    }
+    &__map {
+        display: none;
+        margin-bottom: 20px;
+        iframe {
+            display: block;
+            width: 100%;
+            height: 320px;
+            border: 1px solid $spring-green;
+            border-radius: 12px;
+        }
+    }
+}
+
+.car-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.car-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px dashed $muted;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    &:hover {
+        border-color: $dark-green;
+        transform: translateY(-3px);
+        box-shadow: 0 18px 40px -28px rgba(0, 91, 62, 0.6);
+    }
+    &__media {
+        position: relative;
+        display: block;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background-color: $border;
+    }
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    &:hover &__img {
+        transform: scale(1.04);
+    }
+    &__badges {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    // heart: a checkbox, so "saved" works without JS
+    &__fav {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        input {
+            position: absolute;
+            opacity: 0;
+        }
+        > span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 100%;
+            background-color: rgba(255, 255, 255, 0.88);
+            color: $gray;
+            cursor: pointer;
+            transition: color 0.2s ease, background-color 0.2s ease;
+        }
+        input:checked + span {
+            background-color: $dark-green;
+            color: $spring-green;
+        }
+        input:focus-visible + span {
+            outline: 2px solid $dark-green;
+            outline-offset: 2px;
+        }
+    }
+    &__body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 10px;
+        padding: 16px;
+    }
+    &__head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    &__title {
+        font-size: 16px;
+        line-height: 1.35;
+        font-weight: 700;
+        a {
+            color: $black;
+            text-decoration: none;
+            &:hover {
+                color: $dark-green;
+            }
+        }
+    }
+    &__year {
+        display: block;
+        font-size: 13px;
+        font-weight: 400;
+        color: $light-gray;
+    }
+    &__rating {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 13px;
+        font-weight: 700;
+        color: $black;
+        text-wrap: nowrap;
+        .icon {
+            width: 14px;
+            height: 14px;
+            color: $spring-green;
+        }
+        small {
+            font-size: 12px;
+            font-weight: 400;
+            color: $light-gray;
+        }
+    }
+    &__place {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: $light-gray;
+        .icon {
+            width: 14px;
+            height: 14px;
+        }
+    }
+    &__specs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            color: $gray;
+        }
+        .icon {
+            width: 13px;
+            height: 13px;
+            color: $dark-green;
+        }
+    }
+    &__avail {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        color: $dark-green;
+    }
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-top: auto;
+        padding-top: 12px;
+        border-top: 1px dashed $muted;
+    }
+}
+
+// both prices are always printed; the "Rent by" switch decides which one leads
+.price {
+    display: flex;
+    flex-direction: column;
+    &__item {
+        font-size: 12px;
+        color: $light-gray;
+        text-wrap: nowrap;
+        b {
+            font-weight: 600;
+        }
+        &_hour {
+            font-size: 13px;
+            b {
+                font-size: 20px;
+                font-weight: 700;
+                color: $black;
+                letter-spacing: -0.5px;
+            }
+        }
+    }
+}
+
+.catalog-page:has(#rent-day:checked) .price {
+    &__item_day {
+        order: -1;
+        font-size: 13px;
+        b {
+            font-size: 20px;
+            font-weight: 700;
+            color: $black;
+            letter-spacing: -0.5px;
+        }
+    }
+    &__item_hour {
+        font-size: 12px;
+        b {
+            font-size: inherit;
+            font-weight: 600;
+            color: inherit;
+            letter-spacing: normal;
+        }
+    }
+}
+
+// Grid | List | Map switch
+.catalog-page:has(#view-map:checked) .results__map {
+    display: block;
+}
+
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 36px;
+    &__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 38px;
+        height: 38px;
+        padding: 0 10px;
+        border: 1px dashed $muted;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        color: $gray;
+        text-decoration: none;
+        &:hover {
+            border-color: $dark-green;
+        }
+        &_current {
+            border: 1px solid $dark-green;
+            background-color: $dark-green;
+            color: $spring-green;
+        }
+        &_gap {
+            border: none;
+        }
+    }
+}
+
+.catalog-cta {
+    padding: 52px 0;
+    border-top: 1px solid $muted;
+}
+
+@media screen and (min-width: 576px) {
+    .car-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .catalog-page:has(#view-list:checked) {
+        .car-grid {
+            grid-template-columns: 1fr;
+        }
+        .car-card {
+            flex-direction: row;
+            &__media {
+                flex: 0 0 38%;
+                aspect-ratio: auto;
+                min-height: 220px;
+            }
+        }
+    }
+    .results__view-text {
+        display: inline;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .search {
+        grid-template-columns: 1fr 1fr;
+        &__field_where {
+            grid-column: 1 / -1;
+        }
+    }
+    .categories {
+        flex-wrap: wrap;
+        margin: 20px 0 0;
+        padding: 2px 0 4px;
+    }
+    .results__map iframe {
+        height: 380px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .search {
+        grid-template-columns: 1.6fr 1fr 1fr auto auto;
+        align-items: stretch;
+        padding: 10px;
+        &__field_where {
+            grid-column: auto;
+        }
+        &__submit {
+            width: auto;
+            height: 100%;
+            min-height: 48px;
+            padding: 0 22px;
+            border-radius: 12px;
+        }
+    }
+    .catalog {
+        grid-template-columns: 260px 1fr;
+        align-items: start;
+    }
+    // on desktop the popover is shown inline as a sidebar
+    .filters {
+        position: static;
+        inset: auto;
+        display: block;
+        max-height: none;
+        overflow: visible;
+        border: 1px dashed $muted;
+        border-radius: 12px;
+        background-color: transparent;
+        transform: none;
+        transition: none;
+        &__head,
+        &__actions {
+            background-color: $light;
+        }
+        &__head {
+            border-radius: 12px 12px 0 0;
+        }
+        &__close {
+            display: none;
+        }
+        &__actions {
+            position: static;
+            border-radius: 0 0 12px 12px;
+        }
+    }
+    .results__filters-btn {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .car-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .catalog-page:has(#view-map:checked) .car-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

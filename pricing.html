@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="What renters and owners pay on Rently: trip price, service fee, protection and other fees."/>
+    <title>Pricing · Rently</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__bar">
+            <a class="header__logo" href="landing.html">
+                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyBpZD0ic3ZnMiIgdmlld0JveD0iNTIuODU3IDI4Mi44NTcgMzk3LjE0MyAxMjUuNzE0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxkZXNjPlNvdXJjZTogb3BlbmNsaXBhcnQub3JnL2RldGFpbC8yMDk1NDU8L2Rlc2M+CiAgPHRleHQgc3R5bGU9ImZpbGw6IHJnYig1MSwgNTEsIDUxKTsgZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBmb250LXNpemU6IDEzMnB4OyBmb250LXdlaWdodDogNzAwOyB3aGl0ZS1zcGFjZTogcHJlOyI+PHRzcGFuIHg9IjQ4LjI5MiIgeT0iMzgwLjcxNCIgc3R5bGU9ImZpbGw6IHJnYigwLCAyNTUsIDEyNyk7Ij5SZW50PC90c3Bhbj48dHNwYW4+bHk8L3RzcGFuPjwvdGV4dD4KICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7IDEiIGJlZ2luPSIxLjQ2cyIgZHVyPSIwLjU3cyIgZmlsbD0iZnJlZXplIi8+Cjwvc3ZnPg==" alt="Rently — home">
+            </a>
+            <nav class="header__tabs" aria-label="Main">
+                <ul>
+                    <li><a class="header__link" href="catalog.html">Catalog</a></li>
+                    <li><a class="header__link" href="owners.html">For owners</a></li>
+                    <li><a class="header__link" href="renters.html">For renters</a></li>
+                    <li><a class="header__link" href="safety.html">Safety</a></li>
+                    <li><a class="header__link header__link_active" href="pricing.html" aria-current="page">Pricing</a></li>
+                </ul>
+            </nav>
+            <div class="header__actions">
+                <button class="btn btn-white" type="button" popovertarget="signup">List your car</button>
+                <button class="btn btn-green" type="button" popovertarget="login">Log in</button>
+            </div>
+            <button class="header__burger" type="button" popovertarget="menu" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+    <!-- Mobile menu: opened by the burger, no JS needed -->
+    <nav class="menu" id="menu" popover aria-label="Mobile">
+        <ul class="menu__list">
+            <li><a class="menu__link" href="catalog.html">Catalog<span class="icon icon_chevron-right" aria-hidden="true"></span></a></li>
+            <li><a class="menu__link" href="owners.html">For owners<span class="icon icon_chevron-right" aria-hidden="true"></span></a></li>
+            <li><a class="menu__link" href="renters.html">For renters<span class="icon icon_chevron-right" aria-hidden="true"></span></a></li>
+            <li><a class="menu__link" href="safety.html">Safety<span class="icon icon_chevron-right" aria-hidden="true"></span></a></li>
+            <li><a class="menu__link menu__link_active" href="pricing.html" aria-current="page">Pricing<span class="icon icon_chevron-right" aria-hidden="true"></span></a></li>
+        </ul>
+        <div class="menu__actions">
+            <button class="btn btn-white" type="button" popovertarget="signup">List your car</button>
+            <button class="btn btn-green" type="button" popovertarget="login">Log in</button>
+        </div>
+    </nav>
+    <main class="page">
+        <section class="page-hero">
+            <div class="container page-hero__grid">
+                <div class="page-hero__text">
+                    <span class="label">Pricing</span>
+                    <h1>Clear prices. No surprises at the end of the trip.</h1>
+                    <p class="first-title">Owners set the hourly and daily rate. We add a small service fee and the protection you choose — all shown before you send a request.</p>
+                    <div class="page-hero__ctas">
+                        <a class="btn btn-green" href="#renters">For renters</a>
+                        <a class="btn btn-white" href="#owners">For owners</a>
+                    </div>
+                </div>
+                <div class="page-hero__aside">
+                    <div class="hero-card">
+                        <div class="hero-card__top">
+                            <span class="label">Weekend example</span>
+                            <span class="badge badge_outline">Sat – Sun</span>
+                        </div>
+                        <p class="action-text">Volvo XC60 Recharge · Valby</p>
+                        <dl class="hero-card__rows">
+                            <div><dt>790 kr × 2 days</dt><dd>1 580 kr</dd></div>
+                            <div><dt>Standard protection</dt><dd>120 kr</dd></div>
+                            <div><dt>Service fee (10%)</dt><dd>170 kr</dd></div>
+                            <div class="hero-card__total"><dt>Total</dt><dd>1 870 kr</dd></div>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="renters">
+            <div class="container">
+                <div class="section__head">
+                    <span class="label">For renters</span>
+                    <h2 class="title">What you pay</h2>
+                    <p class="main-text">The total is shown on the car's page before you book. Nothing is charged until the owner approves.</p>
+                </div>
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                            <tr><th scope="col">Item</th><th scope="col">How it's calculated</th><th scope="col">Example, 4-hour trip</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th scope="row">Trip price</th><td>Set by the owner, per hour or per day. Over a day's worth of hours you pay the daily rate.</td><td>65 kr × 4 = 260 kr</td></tr>
+                            <tr><th scope="row">Protection</th><td>Basic is included. Standard or Premium lower your deductible.</td><td>Standard: 60 kr</td></tr>
+                            <tr><th scope="row">Service fee</th><td>10% of trip price and protection, minimum 15 kr.</td><td>32 kr</td></tr>
+                            <tr><th scope="row">Extras</th><td>Child seat, delivery, extra kilometres — only if you add them.</td><td>0 kr</td></tr>
+                            <tr><th scope="row">Deposit</th><td>Held on your card during the trip, released within 3 days.</td><td>1 500 kr (refundable)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <div class="section__head">
+                    <span class="label">Hour or day</span>
+                    <h2 class="title">The daily cap works for you</h2>
+                    <p class="main-text">You never pay more than the daily rate for 24 hours, even when you booked by the hour.</p>
+                </div>
+                <div class="compare">
+                    <div class="compare__item">
+                        <div class="compare__head">
+                            <span class="tiles__icon"><span class="icon icon_clock" aria-hidden="true"></span></span>
+                            <p class="action-text">Short trip</p>
+                        </div>
+                        <p class="text-descr">Minimum 2 hours, then charged per started hour.</p>
+                        <p class="compare__example">3 h × 65 kr = <b>195 kr</b></p>
+                    </div>
+                    <div class="compare__item">
+                        <div class="compare__head">
+                            <span class="tiles__icon"><span class="icon icon_calendar" aria-hidden="true"></span></span>
+                            <p class="action-text">Long day</p>
+                        </div>
+                        <p class="text-descr">10 hours by the hour would be 650 kr — the daily rate is cheaper, so that's what you pay.</p>
+                        <p class="compare__example">10 h → daily rate = <b>390 kr</b></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="owners">
+            <div class="container">
+                <div class="section__head">
+                    <span class="label">For owners</span>
+                    <h2 class="title">What owners pay</h2>
+                    <p class="main-text">Listing is free. We take a platform fee from each trip — the more protection you want, the higher the fee.</p>
+                </div>
+                <div class="plans">
+                    <div class="plans__item">
+                        <p class="action-text">Light</p>
+                        <p class="plans__price">You keep <b>80%</b></p>
+                        <p class="text-descr">Your deductible: <b>10 000 kr</b></p>
+                        <ul class="checklist">
+                            <li>Collision &amp; theft cover</li>
+                            <li>Payouts in 2 days</li>
+                            <li>Price suggestions</li>
+                        </ul>
+                        <button class="btn btn-white" type="button" popovertarget="signup">List your car</button>
+                    </div>
+                    <div class="plans__item plans__item_featured">
+                        <span class="badge plans__badge">Most chosen</span>
+                        <p class="action-text">Standard</p>
+                        <p class="plans__price">You keep <b>75%</b></p>
+                        <p class="text-descr">Your deductible: <b>3 000 kr</b></p>
+                        <ul class="checklist">
+                            <li>Everything in Light</li>
+                            <li>Glass &amp; tyre damage</li>
+                            <li>Loss of income cover</li>
+                        </ul>
+                        <button class="btn btn-green" type="button" popovertarget="signup">List your car</button>
+                    </div>
+                    <div class="plans__item">
+                        <p class="action-text">Premier</p>
+                        <p class="plans__price">You keep <b>70%</b></p>
+                        <p class="text-descr">Your deductible: <b>0 kr</b></p>
+                        <ul class="checklist">
+                            <li>Everything in Standard</li>
+                            <li>No deductible at all</li>
+                            <li>Priority support</li>
+                        </ul>
+                        <button class="btn btn-white" type="button" popovertarget="signup">List your car</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <div class="section__head">
+                    <span class="label">Other fees</span>
+                    <h2 class="title">Only if something goes off-plan</h2>
+                </div>
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                            <tr><th scope="col">Situation</th><th scope="col">Fee</th><th scope="col">Goes to</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th scope="row">Late return without extension</th><td>150 kr per started 30 min</td><td>Owner</td></tr>
+                            <tr><th scope="row">Extra kilometres</th><td>Set by the owner, usually 2–3 kr / km</td><td>Owner</td></tr>
+                            <tr><th scope="row">Fuel or charge not refilled</th><td>Cost of fuel + 100 kr</td><td>Owner</td></tr>
+                            <tr><th scope="row">Cleaning or smoking</th><td>From 300 kr</td><td>Owner</td></tr>
+                            <tr><th scope="row">Cancellation later than 24 h before</th><td>50% of the trip price</td><td>Owner</td></tr>
+                            <tr><th scope="row">Parking fines &amp; tolls</th><td>The actual amount + 50 kr handling</td><td>Rently</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="faq">
+            <div class="container">
+                <div class="section__head">
+                    <span class="label">FAQ</span>
+                    <h2 class="title">Pricing questions</h2>
+                </div>
+                <div class="accordion">
+                    <details class="accordion__item">
+                        <summary class="accordion__question action-text">Can owners change the price after I book?</summary>
+                        <p class="text-descr">No. The price you see when you send the request is the price you pay. Owners can only change prices for future bookings.</p>
+                    </details>
+                    <details class="accordion__item">
+                        <summary class="accordion__question action-text">Are there discounts for longer trips?</summary>
+                        <p class="text-descr">Owners can add weekly discounts (usually 10–20%). They're applied automatically and shown in the price breakdown.</p>
+                    </details>
+                    <details class="accordion__item">
+                        <summary class="accordion__question action-text">When do I pay?</summary>
+                        <p class="text-descr">Your card is charged when the owner approves the trip. Extras added during the trip are charged when it closes.</p>
+                    </details>
+                    <details class="accordion__item">
+                        <summary class="accordion__question action-text">Is VAT included?</summary>
+                        <p class="text-descr">Yes, all prices on Rently include Danish VAT.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+        <section class="catalog-cta">
+            <div class="container">
+                <div class="cta-tile">
+                    <h2 class="title">See real prices near you.</h2>
+                    <p class="main-text">Every car in the catalog shows its hourly and daily rate up front.</p>
+                    <div class="cta-tile__btns">
+                        <a class="btn btn-green" href="catalog.html">Browse cars</a>
+                        <button class="btn btn-white" type="button" popovertarget="signup">List your car</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <ul class="footer__block">
+                    <li>
+                        <a href="landing.html"><img class="footer__logo" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyBpZD0ic3ZnMiIgdmlld0JveD0iNTIuODU3IDI4Mi44NTcgMzk3LjE0MyAxMjUuNzE0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxkZXNjPlNvdXJjZTogb3BlbmNsaXBhcnQub3JnL2RldGFpbC8yMDk1NDU8L2Rlc2M+CiAgPHRleHQgc3R5bGU9ImZpbGw6IHJnYig1MSwgNTEsIDUxKTsgZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBmb250LXNpemU6IDEzMnB4OyBmb250LXdlaWdodDogNzAwOyB3aGl0ZS1zcGFjZTogcHJlOyI+PHRzcGFuIHg9IjQ4LjI5MiIgeT0iMzgwLjcxNCIgc3R5bGU9ImZpbGw6IHJnYigwLCAyNTUsIDEyNyk7Ij5SZW50PC90c3Bhbj48dHNwYW4+bHk8L3RzcGFuPjwvdGV4dD4KICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7IDEiIGJlZ2luPSIxLjQ2cyIgZHVyPSIwLjU3cyIgZmlsbD0iZnJlZXplIi8+Cjwvc3ZnPg==" alt="Rently — home"></a>
+                    </li>
+                    <li>
+                        <p class="text-descr">Peer-to-peer car rentals by the hour or the day. Your neighbour's idle car, your next trip.</p>
+                    </li>
+                </ul>
+                <ul class="footer__block">
+                    <li><h4 class="footer__block-title">Product</h4></li>
+                    <li class="footer__link"><a href="catalog.html">Catalog</a></li>
+                    <li class="footer__link"><a href="landing.html#how-it-works">How it works</a></li>
+                    <li class="footer__link"><a href="pricing.html">Pricing</a></li>
+                    <li class="footer__link"><a href="renters.html#apps">Mobile apps</a></li>
+                </ul>
+                <ul class="footer__block">
+                    <li><h4 class="footer__block-title">Company</h4></li>
+                    <li class="footer__link"><a href="company.html#about">About</a></li>
+                    <li class="footer__link"><a href="company.html#careers">Careers</a></li>
+                    <li class="footer__link"><a href="company.html#press">Press</a></li>
+                    <li class="footer__link"><a href="owners.html#fleet">Talk to sales</a></li>
+                </ul>
+                <ul class="footer__block">
+                    <li><h4 class="footer__block-title">Legal</h4></li>
+                    <li class="footer__link"><a href="legal.html#terms">Terms</a></li>
+                    <li class="footer__link"><a href="legal.html#privacy">Privacy</a></li>
+                    <li class="footer__link"><a href="legal.html#cookies">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer__bottombar">
+                <p class="text-descr">© 2026 Rently Inc. All rights reserved.</p>
+                <div class="footer__locale">
+                    <label class="visually-hidden" for="language">Language</label>
+                    <select id="language" name="language">
+                        <option value="en" selected>English</option>
+                        <option value="da">Dansk</option>
+                    </select>
+                    <label class="visually-hidden" for="region">Region</label>
+                    <select id="region" name="region">
+                        <option value="dk" selected>Denmark · DKK</option>
+                        <option value="se">Sweden · SEK</option>
+                        <option value="de">Germany · EUR</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Sign up overlay: any <button popovertarget="signup"> opens it, Esc / click outside closes it -->
+    <div class="modal" id="signup" popover aria-labelledby="signup-title">
+        <div class="modal__head">
+            <span class="modal__label">List your car</span>
+            <button class="modal__close" type="button" popovertarget="signup" popovertargetaction="hide" aria-label="Close"><span class="icon icon_x" aria-hidden="true"></span></button>
+        </div>
+        <h2 class="title modal__title" id="signup-title">Create your account</h2>
+        <p class="text-descr modal__intro">Two minutes to sign up. Right after, you'll add your car, a few photos and the hours it's free.</p>
+        <ol class="modal__steps">
+            <li class="modal__step modal__step_active">Account</li>
+            <li class="modal__step">Your car</li>
+            <li class="modal__step">Idle hours &amp; price</li>
+        </ol>
+        <div class="modal__social">
+            <button class="btn btn-white btn-block" type="button">Continue with Google</button>
+            <button class="btn btn-white btn-block" type="button">Continue with Apple</button>
+        </div>
+        <p class="modal__divider">or with email</p>
+        <form class="form" action="#" method="post">
+            <fieldset class="fieldset">
+                <legend class="field__label">I want to</legend>
+                <div class="segmented">
+                    <label><input type="radio" name="role" value="owner" checked><span>List my car</span></label>
+                    <label><input type="radio" name="role" value="renter"><span>Rent cars</span></label>
+                    <label><input type="radio" name="role" value="both"><span>Both</span></label>
+                </div>
+            </fieldset>
+            <div class="form__row">
+                <label class="field">
+                    <span class="field__label">First name</span>
+                    <input class="field__input" type="text" name="first_name" autocomplete="given-name" required>
+                </label>
+                <label class="field">
+                    <span class="field__label">Last name</span>
+                    <input class="field__input" type="text" name="last_name" autocomplete="family-name" required>
+                </label>
+            </div>
+            <label class="field">
+                <span class="field__label">Email</span>
+                <input class="field__input" type="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+            </label>
+            <div class="form__row">
+                <label class="field">
+                    <span class="field__label">Phone</span>
+                    <input class="field__input" type="tel" name="phone" autocomplete="tel" placeholder="+45 12 34 56 78" required>
+                </label>
+                <label class="field">
+                    <span class="field__label">City</span>
+                    <select class="field__input" name="city">
+                        <option>Copenhagen</option>
+                        <option>Aarhus</option>
+                        <option>Odense</option>
+                        <option>Aalborg</option>
+                        <option>Kolding</option>
+                        <option>Esbjerg</option>
+                    </select>
+                </label>
+            </div>
+            <label class="field">
+                <span class="field__label">Password</span>
+                <input class="field__input" type="password" name="password" autocomplete="new-password" minlength="8" required>
+                <span class="field__hint">At least 8 characters.</span>
+            </label>
+            <label class="check">
+                <input type="checkbox" name="terms" required>
+                <span>I'm 21 or older and agree to the <a href="legal.html#terms">Terms</a> and <a href="legal.html#privacy">Privacy policy</a>.</span>
+            </label>
+            <label class="check">
+                <input type="checkbox" name="tips">
+                <span>Send me tips on earning with my car (optional).</span>
+            </label>
+            <button class="btn btn-green btn-block form__submit" type="submit">Create account &amp; add my car</button>
+        </form>
+        <p class="text-descr modal__foot">Already have an account? <button class="btn-link" type="button" popovertarget="login">Log in</button></p>
+    </div>
+    <!-- Log in overlay -->
+    <div class="modal modal_narrow" id="login" popover aria-labelledby="login-title">
+        <div class="modal__head">
+            <span class="modal__label">Welcome back</span>
+            <button class="modal__close" type="button" popovertarget="login" popovertargetaction="hide" aria-label="Close"><span class="icon icon_x" aria-hidden="true"></span></button>
+        </div>
+        <h2 class="title modal__title" id="login-title">Log in</h2>
+        <p class="text-descr modal__intro">Manage your trips, cars and payouts.</p>
+        <div class="modal__social">
+            <button class="btn btn-white btn-block" type="button">Google</button>
+            <button class="btn btn-white btn-block" type="button">Apple</button>
+        </div>
+        <p class="modal__divider">or with email</p>
+        <form class="form" action="#" method="post">
+            <label class="field">
+                <span class="field__label">Email</span>
+                <input class="field__input" type="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+            </label>
+            <label class="field">
+                <span class="field__label">Password</span>
+                <input class="field__input" type="password" name="password" autocomplete="current-password" required>
+            </label>
+            <div class="form__inline">
+                <label class="check"><input type="checkbox" name="remember"><span>Remember me</span></label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button class="btn btn-green btn-block form__submit" type="submit">Log in</button>
+        </form>
+        <p class="text-descr modal__foot">New to Rently? <button class="btn-link" type="button" popovertarget="signup">Create an account</button></p>
+    </div>
+    <script type="module" src="/src/js/pricing.js"></script>
+</body>
+</html>
